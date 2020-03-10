@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Loan Calculator</title>
+  <style>
+    .output {
+      font-weight: bold;
+    }
+
+    #payment {
+      text-decoration: underline;
+    }
+
+    #graph {
+      border: 1px solid #000;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+  这是一个 HTML 表格，其中包含 <input> 元素可以用来输入数据。
+  程序将在 <span> 元素中显示计算结果，这些元素都具有类似 'interset' 和 'years' 的 'id'
+  这些 id 将在表格下面的 Javascript 代码中用到。我们注意到，有一些 input 元素定义了
+  'onchage' 或 'onclick' 的事件处理程序，以便用户在输入数据或者点击 inputs 时执行指定的
+  Javascript 代码段
+  -->
+  <table>
+    <tr>
+      <th>Enter Loan Data:</th>
+      <td></td>
+      <th>Loan Balance, Cumulative Equity, and Interest Payments</th>
+    </tr>
+    <tr>
+      <td>Amount of the loan ($):</td>
+      <td><input type="text" id="amount" onchange="caculate();"></td>
+      <td rowspan=8>
+        <canvas id="graph" width="400" height="250"></canvas>
+      </td>
+    </tr>
+    <tr>
+      <td>Annual interset (%):</td>
+      <td><input type="text" id="apr" onchange="caculate();"></td>
+    </tr>
+    <tr>
+      <td>Repayment period (years):</td>
+      <td><input type="text" id="years" onchange="caculate();"></td>
+    </tr>
+    <tr>
+      <td>Zipcode (to find lenders):</td>
+      <td><input type="text" id="zipcode" onchange="caculate();"></td>
+    </tr>
+    <tr>
+      <th>Approximate Payments:</th>
+      <td><button onclick="caculate();">Caculate</button></td>
+    </tr>
+    <tr>
+      <td>Monthly payment:</td>
+      <td>$<span class="output" id="payment"></span></td>
+    </tr>
+    <tr>
+      <td>Total payment:</td>
+      <td>$<span class="output" id="total"></span></td>
+    </tr>
+    <tr>
+      <td>Total interest:</td>
+      <td>$<span class="output" id="totalinterest"></span></td>
+    </tr>
+    <tr>
+      <th>Sponsors:</th>
+      <td colspan="2">
+        Apply for your loan with one of these fine lenders:
+        <div id="lenders"></div>
+      </td>
+    </tr>
+  </table>
+
+  <script src="js/calculator.js"></script>
+</body>
+
+</html>
